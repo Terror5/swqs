@@ -56,7 +56,40 @@ public class ATM
      *                  (number of EUR 5 notes, EUR 20 notes, and EUR 50 notes)
      */
     public Cash withdraw(int amount) throws ATMException {
-    	Cash cash = new Cash(0,0,0);
+    	int amount5 = 0;
+    	int amount20 = 0;
+    	int amount50 = 0;
+    	
+    	if(amount % 5 == 0) {
+    		amount50 = amount / 50;
+    		if(getCount50EUR() < amount50) {
+    			amount50 = getCount50EUR();
+    		}
+    		amount -= amount50 * 50;
+    		
+    		amount20 = amount / 20;
+    		if(getCount20EUR() < amount20) {
+    			amount20 = getCount20EUR();
+    		}
+    		amount -= amount20 * 20;
+    		
+    		amount5 = amount / 5;
+    		if(getCount5EUR() < amount5) {
+    			amount5 = getCount5EUR();
+    		}
+    		amount -= amount5 * 5;
+    		
+    		if(amount > 0)
+    			throw new ATMException("Not enough cash");
+    		
+    	} else {
+    		throw new ATMException("Wrong amount");
+    	}
+    	
+    	Cash cash = new Cash(amount5,amount20,amount50);
+    	this.cash = new Cash(getCount5EUR() - amount5,
+    			getCount20EUR() - amount20,
+    			getCount50EUR() - amount50);
     	return cash;
     }
 }

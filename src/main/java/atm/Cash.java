@@ -29,7 +29,6 @@ public class Cash {
 
 	@Override
 	public boolean equals(Object obj) {
-		System.out.println(obj);
 		if(obj instanceof Cash){
 			Cash cash = (Cash) obj;
 			if(cash.getCount5() == this.getCount5() &&
