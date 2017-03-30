@@ -8,6 +8,7 @@ package atm;
  */
 public class ATM
 {
+	private Cash cash;
 
     
     /** fills the machine with additional bank notes
@@ -17,31 +18,32 @@ public class ATM
      * @throws ATMException 	(illegal values)
      */
     public void refill(int number5, int number20, int number50) throws ATMException {
-    	//TODO
+    	if(number5 < 0 || number20 < 0 || number50 < 0)
+    		throw new ATMException("Wrong refill amount");
+    	this.cash = new Cash(number5, number20, number50);
     }
 
     /** total amount available in the machine */
     public int totalAmount() {
-    	//TODO
-        return 0;
+        return (cash == null)?0:
+        	cash.getCount5() * 5 +
+        	cash.getCount20() * 20 +
+        	cash.getCount50() * 50;
     }
     
     /** number of EUR 5 notes available in the machine */
     public int getCount5EUR() {
-    	//TODO
-    	return 0;
+    	return (cash == null)?0:cash.getCount5();
     }
 
     /** number of EUR 20 notes available in the machine */
     public int getCount20EUR() {
-    	//TODO
-    	return 0;
+    	return (cash == null)?0:cash.getCount20();
     }
 
     /** number of  EUR 50 notes available in the machine */
     public int getCount50EUR() {
-    	//TODO
-    	return 0;
+    	return (cash == null)?0:cash.getCount50();
     }
 
     
@@ -54,8 +56,8 @@ public class ATM
      *                  (number of EUR 5 notes, EUR 20 notes, and EUR 50 notes)
      */
     public Cash withdraw(int amount) throws ATMException {
-    	//TODO:
-       return null;
+    	Cash cash = new Cash(0,0,0);
+    	return cash;
     }
 }
 

@@ -26,4 +26,20 @@ public class Cash {
 	public String toString() {
 		return count5 + " x €5, " + count20 + " x €20, " + count50 + " x €50";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		System.out.println(obj);
+		if(obj instanceof Cash){
+			Cash cash = (Cash) obj;
+			if(cash.getCount5() == this.getCount5() &&
+					cash.getCount20() == this.getCount20() &&
+					cash.getCount50() == this.getCount50()) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
+	}
 }

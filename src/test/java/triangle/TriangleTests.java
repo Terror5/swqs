@@ -14,29 +14,31 @@ public class TriangleTests {
 	
 	@Test
 	public void testScalene() {
-		assertEquals(TriangleType.SCALENE, Triangle_Dummy.classify(0, 0, 0));
+		assertEquals(TriangleType.SCALENE, Triangle_Dummy.classify(1, 2, 3));
 	}
 	
 	@Test
 	public void testEquilateral() {
-		assertEquals(TriangleType.EQUILATERAL, Triangle_Dummy.classify(0, 0, 0));
+		assertEquals(TriangleType.EQUILATERAL, Triangle_Dummy.classify(10, 10, 10));
 	}
 
 	@Test
-	public void testIsoscales() {
-		assertEquals(TriangleType.ISOSCALES, Triangle_Dummy.classify(0, 0, 0));
+	public void testIsoscalesAB() {
+		assertEquals(TriangleType.ISOSCALES, Triangle_Dummy.classify(2, 2, 1));
 	}
-
+	
+	@Test
+	public void testIsoscalesAC() {
+		assertEquals(TriangleType.ISOSCALES, Triangle_Dummy.classify(2, 1, 2));
+	}
+	
+	@Test
+	public void testIsoscalesBC() {
+		assertEquals(TriangleType.ISOSCALES, Triangle_Dummy.classify(1, 2, 2));
+	}
 
 	@After
 	public void tearDown() throws Exception {
-	}
-	
-	
-
-	@Test
-	public void test() {
-		fail("Not yet implemented");
 	}
 
 }
